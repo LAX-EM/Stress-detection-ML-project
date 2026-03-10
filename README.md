@@ -1,20 +1,37 @@
-🧠 AI-Driven Stress DetectorAn end-to-end Machine Learning project that predicts human stress levels by combining Real-time Facial Emotion Recognition (Computer Vision) and Simulated Lifestyle Data (Mobile Usage/Sleep).🚀 How it WorksEmotion AI: Uses a CNN (.h5) model to detect facial expressions via webcam.Data AI: Uses a Random Forest (.pkl) model to analyze lifestyle factors (Sleep, Messages, Calls).Final Output: A Flask web interface that displays a "Target Variable" (Low, Medium, or High Stress).🛠️ Environment Setup (Step-by-Step)1. Clone the RepositoryBashgit clone https://github.com/your-username/Stress_ML_Project.git
-cd Stress_ML_Project
-2. Create a Virtual EnvironmentThis keeps your project libraries isolated and prevents version conflicts.Bash# Windows
-python -m venv venv
-venv\Scripts\activate
+# 🧠 AI Stress Predictor: Multi-Modal Detection
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org)
+[![Flask](https://img.shields.io/badge/framework-Flask-lightgrey)](https://flask.palletsprojects.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+An intelligent web application that identifies user stress levels by combining **Real-time Facial Emotion Recognition** (Computer Vision) with **User-input Lifestyle Data** (Sleep, Communication, and Activity).
+
+
+
+---
+
+## 📌 Features
+* **Live Camera Capture:** Snap a photo directly in the browser to detect your current emotional state.
+* **Multi-Model Fusion:** Integrates a Convolutional Neural Network (`.h5`) for vision and a Random Forest Classifier (`.pkl`) for tabular data.
+* **Interactive UI:** A clean, responsive dashboard built with Jinja2 templates and custom CSS.
+* **Instant Classification:** Provides a target stress variable (Low, Medium, High) based on synchronized inputs.
+
+---
+
+## 🛠️ Tech Stack
+* **Backend:** Flask (Python)
+* **Computer Vision:** OpenCV, TensorFlow/Keras
+* **Machine Learning:** Scikit-Learn, Joblib, Pandas
+* **Frontend:** HTML5, CSS3, JavaScript (Webcam API)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+Ensure you have Python 3.8+ installed. Create and activate a virtual environment to keep dependencies isolated:
+```bash
+python -m venv venv
+# Windows
+venv\Scripts\activate
 # Mac/Linux
-python3 -m venv venv
 source venv/bin/activate
-3. Install DependenciesInstall all required AI and Web libraries using the requirements file:Bashpip install -r requirements.txt
-🏗️ Project ArchitectureFileRoleapp.pyThe Flask backend server that handles AI logic.templates/index.htmlThe Jinja2 frontend with webcam integration.emotion_model.h5Deep Learning model for face emotion detection.stress_model.pklScikit-Learn model for lifestyle stress prediction.scaler.pklThe feature scaling object for data normalization.🖥️ Running the ApplicationStep 1: Prepare the ModelsEnsure your .h5 and .pkl files are in the root directory.Step 2: Start the Flask ServerBashpython app.py
-Step 3: Access the UIOpen your browser and go to: http://127.0.0.1:5000Allow camera access.Input your data (Sleep hours, Message count, etc.).Click "Capture & Identify Stress".📊 Data MappingThe system maps facial emotions into the Stress Model using the following logic:Happy $\rightarrow$ 0Neutral $\rightarrow$ 1Sad $\rightarrow$ 2Angry/Fear/Disgust $\rightarrow$ 3Surprise $\rightarrow$ 4📜 Requirements (requirements.txt)Plaintextflask
-opencv-python
-tensorflow
-scikit-learn
-joblib
-pandas
-numpy
-Pillow
-🤝 ContributingFor new contributors (newcomers):Fork the Project.Create your Feature Branch (git checkout -b feature/NewAI).Commit your Changes (git commit -m 'Add some NewAI').Push to the Branch (git push origin feature/NewAI).Open a Pull Request.
