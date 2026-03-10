@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AI Stress Detector</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; display: flex; justify-content: center; padding: 40px; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 500px; }
+        h2 { text-align: center; color: #2c3e50; }
+        #video { width: 100%; border-radius: 10px; background: #000; margin-bottom: 10px; }
+        #canvas { display: none; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 13px; color: #666; margin-bottom: 5px; }
+        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        button:hover { background: #219150; }
+        .result-box { margin-top: 20px; padding: 20px; border-radius: 10px; text-align: center; border: 2px solid #ddd; }
+        .High { border-color: #e74c3c; color: #e74c3c; background: #fdf2f2; }
+        .Medium { border-color: #f39c12; color: #f39c12; background: #fef9f2; }
+        .Low { border-color: #27ae60; color: #27ae60; background: #f2faf5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Live Stress Identifier</h2>
+        
+        <video id="video" autoplay></video>
+        <canvas id="canvas" width="640" height="480"></canvas>
+
+        <form id="stressForm" action="/predict" method="post">
+            <input type="hidden" name="image_data" id="image_data">
+
+            <div class="input-group">
+                <label>Sleep Hours (Last Night):</label>
+                <input type="number" step="0.1" name="sleep" value="7.0" required>
+            </div>
+            <div class="input-group">
+                <label>Messages Sent Today:</label>
+                <input type="number" name="sent" value="20" required>
+            </div>
+            <div class="input-group">
+                <label>Messages Received Today:</label>
+                <input type="number" name="received" value="25" required>
+            </div>
+            <div style="display: flex; gap: 10px;" class="input-group">
+                <div style="flex:1">
+                    <label>Incoming Calls:</label>
+                    <input type="number" name="c_in" value="5">
+                </div>
+                <div style="flex:1">
+                    <label>Outgoing Calls:</label>
+                    <input type="number" name="c_out" value="3">
+                </div>
+            </div>
+
+            <button type="button" onclick="captureAndSend()">Capture & Identify Stress</button>
+        </form>
+
+        {% if stress_level %}
+        <div class="result-box {{ stress_level }}">
+            <div style="font-size: 14px;">Detected Emotion: <strong>{{ emotion }}</strong></div>
+            <div style="font-size: 24px; margin-top: 5px;">Target: {{ stress_level }} Stress</div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const imageDataInput = document.getElementById('image_data');
+        const form = document.getElementById('stressForm');
+
+        // Access the camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => { video.srcObject = stream; })
+            .catch(err => { alert("Camera access denied"); });
+
+        function captureAndSend() {
+            // Draw the current video frame to the hidden canvas
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, 640, 480);
+            
+            // Convert image to Base64 string
+            const dataURL = canvas.toDataURL('image/jpeg');
+            imageDataInput.value = dataURL;
+
+            // Submit the form
+            form.submit();
+        }
+    </script>
+</body>
+</html>
