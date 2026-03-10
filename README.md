@@ -69,8 +69,8 @@ Follow these steps to run the project locally.
 
 ## 1️⃣ Clone the Repository
 
-```bash
-https://github.com/LAX-EM/Stress-detection-ML-project.git
+```Type in your terminal
+git clone https://github.com/LAX-EM/Stress-detection-ML-project.git
 cd Stress_ML_Project
 ```
 
@@ -82,14 +82,14 @@ Using a virtual environment prevents dependency conflicts.
 
 ### Windows
 
-```bash
+```Type in your terminal
 python -m venv venv
 venv\Scripts\activate
 ```
 
 ### Mac / Linux
 
-```bash
+```Type in your terminal
 python3 -m venv venv
 source venv/bin/activate
 ```
@@ -100,7 +100,7 @@ source venv/bin/activate
 
 Install all required dependencies:
 
-```bash
+```Type in your terminal
 pip install flask opencv-python tensorflow scikit-learn joblib pandas numpy Pillow
 ```
 
@@ -124,7 +124,7 @@ scaler.pkl           # Feature scaler
 
 Run the Flask application:
 
-```bash
+```Type in your terminal
 python app.py
 ```
 
