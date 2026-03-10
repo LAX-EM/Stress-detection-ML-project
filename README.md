@@ -35,3 +35,24 @@ python -m venv venv
 venv\Scripts\activate
 # Mac/Linux
 source venv/bin/activate
+
+2. Installation
+Install the required libraries using the requirements file:
+
+Bash
+pip install -r requirements.txt
+3. Required Model Files
+Ensure the following pre-trained files are located in the project root:
+
+emotion_model.h5 - The CNN model for emotion detection.
+
+stress_model.pkl - The Random Forest model for stress prediction.
+
+scaler.pkl - The Standard Scaler used during training.
+
+4. Running the App
+Start the Flask development server:
+
+Bash
+python app.py
+Open your browser and navigate to http://127.0.0.1:5000.
