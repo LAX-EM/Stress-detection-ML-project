@@ -70,7 +70,7 @@ Follow these steps to run the project locally.
 ## 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/Stress_ML_Project.git
+https://github.com/LAX-EM/Stress-detection-ML-project.git
 cd Stress_ML_Project
 ```
 
