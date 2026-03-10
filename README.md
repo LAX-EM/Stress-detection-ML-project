@@ -63,11 +63,12 @@ A responsive dashboard built using **Jinja2 templates, HTML, CSS, and JavaScript
 
 # 🚀 Environment Setup & Installation
 
-Follow these steps to run the project locally.
+Follow these steps to run the project locally.Openn new terminal and  first navigate to your decktop folder or any location. 
 
 ---
 
 ## 1️⃣ Clone the Repository
+Type in your terminal
 
 ```Type in your terminal
 git clone https://github.com/LAX-EM/Stress-detection-ML-project.git
@@ -81,6 +82,7 @@ cd Stress_ML_Project
 Using a virtual environment prevents dependency conflicts.
 
 ### Windows
+Type in your terminal
 
 ```Type in your terminal
 python -m venv venv
@@ -88,6 +90,7 @@ venv\Scripts\activate
 ```
 
 ### Mac / Linux
+Type in your terminal
 
 ```Type in your terminal
 python3 -m venv venv
@@ -96,12 +99,12 @@ source venv/bin/activate
 
 ---
 
-## 3️⃣ Install Required Packages
+## 3️⃣ Install Required Packages(Type in your terminal)
 
 Install all required dependencies:
 
 ```Type in your terminal
-pip install flask opencv-python tensorflow scikit-learn joblib pandas numpy Pillow
+pip install -r requirements.txt
 ```
 
 ---
